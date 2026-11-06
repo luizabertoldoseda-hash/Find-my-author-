@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Identidade: revista literária trimestral × laboratório de dados.
+   Papel quente, tinta quase preta, um grená editorial e um azul-tinta para o
+   segundo autor nas comparações (par validado para daltonismo, ver docs). */
+@theme {
+  --color-paper: #f4efe6;
+  --color-paper-2: #ebe4d6;
+  --color-card: #fbf8f2;
+  --color-ink: #1c1a17;
+  --color-ink-2: #4a453d;
+  --color-muted: #6f685c;
+  --color-rule: #d6cdbb;
+  --color-accent: #a13a2f;
+  --color-accent-soft: #f1ddd6;
+  --color-second: #2b6e9e;
+  --color-second-soft: #dbe7ef;
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-serif: "Newsreader Variable", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+@layer base {
+  html { background: var(--color-paper); color: var(--color-ink); }
+  body { font-family: var(--font-serif); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.1; }
+  ::selection { background: var(--color-accent-soft); }
+  a { text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+}
+
+@layer components {
+  .eyebrow { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); }
+  .rule { border-top: 1px solid var(--color-rule); }
+  .rule-strong { border-top: 2px solid var(--color-ink); }
+  .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .dropcap::first-letter { font-family: var(--font-display); float: left; font-size: 3.4em; line-height: 0.85; padding: 0.08em 0.1em 0 0; color: var(--color-accent); }
+  .link { text-decoration: underline; text-decoration-color: var(--color-rule); }
+  .link:hover { text-decoration-color: var(--color-accent); color: var(--color-accent); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in { animation: fade 0.35s ease-out both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
